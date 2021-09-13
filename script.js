@@ -33,7 +33,7 @@ const allPixel = document.querySelectorAll('.pixel');
 
 function fillPixel() {
   for (let index = 0; index < allPixel.length; index += 1) {
-    allPixel[index].addEventListener('click', function() {
+    allPixel[index].addEventListener('click', () => {
       const pixelSelected = document.querySelector('.selected');
       const getColor = window.getComputedStyle(pixelSelected).getPropertyValue('background-color');
       const newColor = getColor;
