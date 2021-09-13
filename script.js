@@ -10,6 +10,9 @@ for (let count = 0; count < 5; count += 1) {
   }
 }
 
+const black = document.querySelector('#black');
+black.classList.add('selected');
+
 const colorBlack = document.querySelector('#black');
 const colorBlue = document.querySelector('#blue');
 const colorYellow = document.querySelector('#yellow');
@@ -25,3 +28,18 @@ colorBlack.addEventListener('click', changeColorSelect);
 colorBlue.addEventListener('click', changeColorSelect);
 colorYellow.addEventListener('click', changeColorSelect);
 colorGreen.addEventListener('click', changeColorSelect);
+
+const allPixel = document.querySelectorAll('.pixel');
+
+function fillPixel() {
+  for (let index = 0; index < allPixel.length; index += 1) {
+    allPixel[index].addEventListener('click', function() {
+      const pixelSelected = document.querySelector('.selected');
+      const getColor = window.getComputedStyle(pixelSelected).getPropertyValue('background-color');
+      const newColor = getColor;
+      allPixel[index].style.backgroundColor = newColor;
+    });
+  }
+}
+
+fillPixel();
