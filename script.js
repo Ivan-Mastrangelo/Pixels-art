@@ -43,3 +43,13 @@ function fillPixel() {
 }
 
 fillPixel();
+
+const clearButton = document.querySelector('#clear-board');
+
+function clearBoard() {
+  for (let index = 0; index < allPixel.length; index += 1) {
+    allPixel[index].style.backgroundColor = 'white';
+  }
+}
+
+clearButton.addEventListener('click', clearBoard);
