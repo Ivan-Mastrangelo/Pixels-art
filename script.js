@@ -16,9 +16,9 @@ const black = document.querySelector('#black');
 black.classList.add('selected');
 
 const colorBlack = document.querySelector('#black');
-const colorBlue = document.querySelector('#blue');
-const colorYellow = document.querySelector('#yellow');
-const colorGreen = document.querySelector('#green');
+const color2 = document.querySelector('#color2');
+const color3 = document.querySelector('#color3');
+const color4 = document.querySelector('#color4');
 
 function changeColorSelect(event) {
   const getColor = document.querySelector('.selected');
@@ -27,18 +27,18 @@ function changeColorSelect(event) {
 }
 
 colorBlack.addEventListener('click', changeColorSelect);
-colorBlue.addEventListener('click', changeColorSelect);
-colorYellow.addEventListener('click', changeColorSelect);
-colorGreen.addEventListener('click', changeColorSelect);
-
-// const allPixel = document.querySelectorAll('.pixel');
+color2.addEventListener('click', changeColorSelect);
+color3.addEventListener('click', changeColorSelect);
+color4.addEventListener('click', changeColorSelect);
 
 function fillPixel() {
   const allPixel = document.querySelectorAll('.pixel');
   for (let index = 0; index < allPixel.length; index += 1) {
     allPixel[index].addEventListener('click', () => {
       const pixelSelected = document.querySelector('.selected');
-      const getColor = window.getComputedStyle(pixelSelected).getPropertyValue('background-color');
+      const getColor = window
+        .getComputedStyle(pixelSelected)
+        .getPropertyValue('background-color');
       const newColor = getColor;
       allPixel[index].style.backgroundColor = newColor;
     });
@@ -58,7 +58,6 @@ function clearBoard() {
 
 clearButton.addEventListener('click', clearBoard);
 
-// const input = document.querySelector('#board-size');
 const vqvButton = document.querySelector('#generate-board');
 
 function eraseOldBoard() {
@@ -100,3 +99,35 @@ function newGrid() {
 }
 
 vqvButton.addEventListener('click', newGrid);
+
+function randomNumber() {
+  const number = Math.ceil(Math.random() * 255);
+  return number;
+}
+
+function rgbRandom() {
+  let colors = [];
+  for (let count = 0; count < 3; count += 1) {
+    let base16 = randomNumber();
+    base16 = parseInt(base16, 10).toString(16);
+    if (base16 === 1) {
+      base16 = `0${base16}`;
+    }
+    colors.push(base16);
+  }
+  colors = colors.join('');
+  return colors;
+}
+
+function loadPageColor() {
+  const color234 = [color2, color3, color4];
+  const newColor = [];
+  for (let i = 0; i < color234.length; i += 1) {
+    newColor[i] = `#${rgbRandom()}`;
+    for (let index = 0; index < color234.length; index += 1) {
+      color234[i].style.backgroundColor = newColor[i];
+    }
+  }
+}
+
+window.onload = loadPageColor;

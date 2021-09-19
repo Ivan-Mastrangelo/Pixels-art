@@ -9,15 +9,15 @@
   background-color: black;
 }
 
-#blue {
+#color2 {
   background-color: blue;
 }
 
-#yellow {
+#color3 {
   background-color: yellow;
 }
 
-#green {
+#color4 {
   background-color: green;
 }
 
@@ -32,3 +32,4 @@
 #pixel-board {
   font-size: 0;
 }
+
