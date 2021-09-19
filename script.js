@@ -69,7 +69,12 @@ function eraseOldBoard() {
 }
 
 function createNewBoard() {
-  const n = document.querySelector('#board-size').value;
+  let n = document.querySelector('#board-size').value;
+  if (n < 5) {
+    n = 5;
+  } else if (n > 50) {
+    n = 50;
+  }
   for (let count = 0; count < n; count += 1) {
     const pixLine = document.createElement('div');
     pixLine.className = 'paletLine';
